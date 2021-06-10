@@ -22,7 +22,8 @@ def start(update, context):
 
 
 def echo(update, context):
-    context.bot.send_message(chat_id=update.effective.chat_id, text=update.message.text)
+    print(db_keys)
+    context.bot.send_message(chat_id=update.effective_chat.id, text=update.message.text)
 
 def main():
     print('start working')
