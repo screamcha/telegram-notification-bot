@@ -4,6 +4,7 @@ import redis
 import os
 
 updater = Updater(token=os.environ('TELEGRAM_TOKEN'), use_context=True)
+print(os.environ('TELEGRAM_TOKEN'))
 r = redis.from_url(os.environ('REDIS_URL'))
 j = updater.job_queue
 db_keys = r.keys(pattern='*')
@@ -24,6 +25,7 @@ def echo(update, context):
     context.bot.send_message(chat_id=update.effective.chat_id, text=update.message.text)
 
 def main():
+    print('start working')
     start_handler = CommandHandler('start', start)
     echo_handler = MessageHandler(Filters.text & (~Filters.command), echo)
     dispatcher.add_handler(start_handler)
