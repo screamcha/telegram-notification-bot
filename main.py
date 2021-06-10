@@ -1,12 +1,11 @@
 from telegram.ext import Updater, CommandHandler, dispatcher, MessageHandler, Filters, CallbackContext
-from constants import TELEGRAM_TOKEN, REDIS_URL
 import logging
 import redis
+import os
 
-updater = Updater(token=TELEGRAM_TOKEN, use_context=True)
-r = redis.from_url(REDIS_URL)
+updater = Updater(token=os.environ('TELEGRAM_TOKEN'), use_context=True)
+r = redis.from_url(os.environ('REDIS_URL'))
 j = updater.job_queue
-print(r)
 db_keys = r.keys(pattern='*')
 
 dispatcher = updater.dispatcher
