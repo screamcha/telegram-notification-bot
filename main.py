@@ -3,9 +3,9 @@ import logging
 import redis
 import os
 
-updater = Updater(token=os.environ('TELEGRAM_TOKEN'), use_context=True)
-print(os.environ('TELEGRAM_TOKEN'))
-r = redis.from_url(os.environ('REDIS_URL'))
+updater = Updater(token=os.environ['TELEGRAM_TOKEN'], use_context=True)
+print(os.environ['TELEGRAM_TOKEN'])
+r = redis.from_url(os.environ['REDIS_URL'])
 j = updater.job_queue
 db_keys = r.keys(pattern='*')
 
